@@ -74,7 +74,16 @@ public class Banco : DbContext
         SaveChanges();
     }
 
-    public void ConsultaTorneio(Guid id) {}
+    public void ConsultaTorneioID(Guid id)
+    {
+        List<Torneio> TorneioFiltrado = Torneios.Where(t => t.Id == id).ToList();
 
+        // No view executar um foreach para mostar os resultados 
+    }
 
+    public void ConsultaTorneioNomeJogo(string nome)
+    {
+        List<Torneio> TorneioFiltrado = Torneios.Where(t => t.NomeJogo == nome).ToList();
+        // No view executar um foreach para mostar os resultados 
+    }
 }

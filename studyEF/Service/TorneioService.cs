@@ -1,9 +1,11 @@
 ﻿namespace studyEF.Service;
 using studyEF.Model;
+using studyEF.Data;
 using System;
 
 public class TorneioService
 {
+    private Banco _banco = new Banco();
     public Torneio CriarTorneio(string nomeJogo, DateTime dataEvento)
     {
         if (DateTime.Now <= dataEvento)
@@ -22,10 +24,15 @@ public class TorneioService
     {
         if (id != null)
         {
-            
+            _banco.ConsultaTorneioID(id.Value);
         }else if (nomeJogo != null)
-        {}
-        else{}
+        {
+            _banco.ConsultaTorneioNomeJogo(nomeJogo);
+        }
+        else
+        {
+            string ND = "Nenhum Torneio foi encontrado";
+        }
     }
     public void AtualizarTorneio(){}
 }
